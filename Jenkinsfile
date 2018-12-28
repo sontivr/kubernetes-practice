@@ -14,14 +14,14 @@ node {
 
     stage "Build"
     
-        sh "docker build -t ${imageName} -f apps/hello-minikube/Dockerfile apps/hello-minikube"
+        sh "sudo docker build -t ${imageName} -f apps/hello-minikube/Dockerfile apps/hello-minikube"
     
     stage "Push"
 
-        sh "docker push ${imageName}"
+        sh "sudo docker push ${imageName}"
 
     stage "Deploy"
 
-        kubernetesDeploy configs: "apps/${appName}/k8s/*.yaml", kubeconfigId: 'hello_kubeconfig'
+        sudo kubernetesDeploy configs: "apps/${appName}/k8s/*.yaml", kubeconfigId: 'hello_kubeconfig'
 
 }
