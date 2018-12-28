@@ -14,11 +14,11 @@ node {
 
     stage "Build"
     
-        sh "sudo docker build -t ${imageName} -f apps/hello-minikube/Dockerfile apps/hello-minikube"
+        sh "docker build -t ${imageName} -f apps/hello-minikube/Dockerfile apps/hello-minikube"
     
     stage "Push"
 
-        sh "sudo docker push ${imageName}"
+        sh "docker push ${imageName}"
 
     stage "Deploy"
 
